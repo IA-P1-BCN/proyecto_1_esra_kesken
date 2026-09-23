@@ -28,18 +28,27 @@ if __name__ == "__main__":
             marca_tiempo = time.time()
             print("Viaje iniciando. Estado: parado")
         elif comando == "movimiento":
+            if marca_tiempo is None:
+                print("Error: primero debes iniciar un viaje con 'iniciar'.")
+                continue
             tiempo_transcurrido = time.time() - marca_tiempo
             total += calcular_importe(estado, tiempo_transcurrido)
             estado = "movimiento"
             marca_tiempo = time.time()
             print(f"Cambiado a movimiento. Total: {total:.2f}€")  
         elif comando == "parado":
+            if marca_tiempo is None:
+                print("Error: primero debes iniciar un viaje con 'iniciar'.")
+                continue
             tiempo_transcurrido = time.time() - marca_tiempo
             total += calcular_importe(estado, tiempo_transcurrido)
             estado = "parado"
             marca_tiempo = time.time()
             print(f"Cambiado a parado. Total: {total:.2f}€")  
         elif comando == "finalizar":
+            if marca_tiempo is None:
+                print("Error: primero debes iniciar un viaje con 'iniciar'.")
+                continue
             tiempo_transcurrido = time.time() - marca_tiempo
             total += calcular_importe(estado, tiempo_transcurrido)
             print(f"Viaje finalizando. Total a pagar: {total:.2f}€")
