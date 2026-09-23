@@ -2,7 +2,9 @@
 name = "proyecto-1-esra-kesken"
 version = "0.1.0"
 requires-python = ">=3.12"
-dependencies = []
+dependencies = [
+    "streamlit>=1.64.0",
+]
 
 [dependency-groups]
 dev = [
