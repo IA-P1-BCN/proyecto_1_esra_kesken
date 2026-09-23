@@ -1,5 +1,6 @@
 import time
 import json
+import datetime
 
 with open("config/tarifas.json") as f:
     tarifas = json.load(f)
@@ -42,6 +43,8 @@ if __name__ == "__main__":
             tiempo_transcurrido = time.time() - marca_tiempo
             total += calcular_importe(estado, tiempo_transcurrido)
             print(f"Viaje finalizando. Total a pagar: {total:.2f}€")
+            with open("logs/historial.txt", "a") as log:
+                log.write(f"{datetime.datetime.now()} - Total: {total:.2f}€\n")
             total = 0.0
             estado = "parado"
             marca_tiempo = None
