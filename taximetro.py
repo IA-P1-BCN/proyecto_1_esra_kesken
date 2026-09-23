@@ -1,8 +1,12 @@
 import time
+import json
+
+with open("config/tarifas.json") as f:
+    tarifas = json.load(f)
 
 
-TARIFA_MOVIMIENTO = 0.05
-TARIFA_PARADO = 0.02
+TARIFA_MOVIMIENTO = tarifas["tarifa_movimiento"]
+TARIFA_PARADO = tarifas["tarifa_parado"]
 
 def calcular_importe(estado, tiempo_transcurrido):
     if estado == "parado":
