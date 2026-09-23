@@ -51,9 +51,14 @@ Este proyecto se organiza por **niveles**, no por fases rígidas.
 - [x] Tests automáticos con pytest (`tests/test_taximetro.py`)
 - [x] Manejo de errores de entrada (evita que el programa se rompa si se usa un comando antes de `iniciar`)
 
-### Nivel Avanzado
+### Nivel Avanzado ✅
 
-*(en desarrollo — implementando interfaz con Streamlit en la rama feature/streamlit-gui)*
+- [x] Interfaz gráfica con Streamlit (`streamlit_app.py`), reutilizando `calcular_importe` de `taximetro.py`
+
+**Ejecución:**
+```bash
+uv run streamlit run streamlit_app.py
+```
 
 
 ## Tecnologías
@@ -62,8 +67,11 @@ Este proyecto se organiza por **niveles**, no por fases rígidas.
 - **Control de versiones:** Git / GitHub
 - **Gestión de entorno y dependencias:** [uv](https://github.com/astral-sh/uv)
 - **Tests:** pytest
+- **Interfaz gráfica:** Streamlit
 
 ## Decisiones Técnicas
+
+- **Streamlit para la interfaz gráfica:** elegido en vez de Flask u otro framework porque ya tenía experiencia previa con Streamlit (bootcamp de datos), lo que permitió centrarme en la lógica del taxímetro en vez de aprender un framework nuevo desde cero.
 
 - **Medición de tiempo con `time.time()`:** se guarda una marca de tiempo (`marca_tiempo`) cada vez que cambia el estado del taxi. Al producirse el siguiente cambio (o al finalizar), se calcula el tiempo real transcurrido desde esa marca y se aplica la tarifa correspondiente al estado **anterior** (el que estaba activo durante ese tramo).
 - **f-strings para la salida:** se usa `f"...{variable:.2f}€"` para mostrar importes con dos decimales de forma legible.
@@ -72,9 +80,12 @@ Este proyecto se organiza por **niveles**, no por fases rígidas.
 
 ## Organización del Proyecto y Estructura de Git
 
-*(se documentará aquí cómo se organiza el trabajo: ramas, qué representa cada rama, y cómo evolucionó el proyecto)*
+El trabajo se organiza en un tablero Kanban (GitHub Projects: Backlog / In Progress / Done), con tareas etiquetadas por nivel (`[Medio]`, `[Avanzado]`). El nivel esencial e inicio del nivel medio se desarrollaron directamente en `main`, con commits siguiendo el formato de [conventional commits](https://www.conventionalcommits.org/) (`feat:`, `fix:`, `test:`, `docs:`, `chore:`).
 
 - `main`: rama principal, versión estable
+- `feature/streamlit-gui`: desarrollo de la interfaz gráfica (nivel avanzado)
+
+A modo de práctica del flujo de trabajo en equipo, se hizo el mismo cambio en `main` y en `feature/streamlit-gui` a propósito, provocando un conflicto de merge, que se resolvió manualmente al integrar la rama en `main`.
 
 ## Instalación y Ejecución
 
@@ -88,6 +99,10 @@ uv run taximetro.py
 ```bash
 uv run pytest -v
 ```
+
+## Futuras Mejoras
+
+- Para uso real por parte de un taxista, la interfaz debería desplegarse como una app web alojada (accesible sin terminal) o empaquetarse como app móvil/tablet.
 
 ## Autora
 
