@@ -53,7 +53,8 @@ Este proyecto se organiza por **niveles**, no por fases rígidas.
 
 ### Nivel Avanzado
 
-*(pendiente — se evaluará una interfaz con Streamlit más adelante)*
+*(en desarrollo — implementando interfaz con Streamlit en la rama feature/streamlit-gui)*
+
 
 ## Tecnologías
 
