@@ -43,25 +43,31 @@ Este proyecto se organiza por **niveles**, no por fases rígidas.
 - [x] Finalización del trayecto con importe total mostrado
 - [x] Varios trayectos seguidos sin cerrar el programa (reinicio de `total`, `estado` y `marca_tiempo` tras finalizar)
 
-### Nivel Medio
+### Nivel Medio ✅
 
-*(pendiente)*
+- [x] Lógica separada en funciones (`calcular_importe`)
+- [x] Tarifas configurables externamente (`config/tarifas.json`)
+- [x] Historial de trayectos guardado en `logs/historial.txt`
+- [x] Tests automáticos con pytest (`tests/test_taximetro.py`)
+- [x] Manejo de errores de entrada (evita que el programa se rompa si se usa un comando antes de `iniciar`)
 
 ### Nivel Avanzado
 
-*(pendiente)*
+*(pendiente — interfaz con Streamlit en evaluación)*
 
 ## Tecnologías
 
-- **Lenguaje:** Python 3.10+
+- **Lenguaje:** Python 3.12+
 - **Control de versiones:** Git / GitHub
-
-*(se documentará aquí cualquier tecnología adicional y el motivo de su elección)*
+- **Gestión de entorno y dependencias:** [uv](https://github.com/astral-sh/uv)
+- **Tests:** pytest
 
 ## Decisiones Técnicas
 
 - **Medición de tiempo con `time.time()`:** se guarda una marca de tiempo (`marca_tiempo`) cada vez que cambia el estado del taxi. Al producirse el siguiente cambio (o al finalizar), se calcula el tiempo real transcurrido desde esa marca y se aplica la tarifa correspondiente al estado **anterior** (el que estaba activo durante ese tramo).
 - **f-strings para la salida:** se usa `f"...{variable:.2f}€"` para mostrar importes con dos decimales de forma legible.
+- **Tarifas en `config/tarifas.json`:** en vez de tenerlas fijas en el código, para poder cambiarlas sin tocar `taximetro.py`.
+- **`if __name__ == "__main__":`:** protege el bucle principal para que `taximetro.py` se pueda importar de forma segura desde los tests, sin que se ejecute el programa interactivo.
 
 ## Organización del Proyecto y Estructura de Git
 
@@ -72,7 +78,14 @@ Este proyecto se organiza por **niveles**, no por fases rígidas.
 ## Instalación y Ejecución
 
 ```bash
-python3 taximetro.py
+uv sync           # instala las dependencias (incluye pytest)
+uv run taximetro.py
+```
+
+## Tests
+
+```bash
+uv run pytest -v
 ```
 
 ## Autora
