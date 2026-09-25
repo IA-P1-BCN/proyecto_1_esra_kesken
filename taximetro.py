@@ -35,6 +35,7 @@ if __name__ == "__main__":
         if comando == "iniciar":
             marca_tiempo = time.time()
             print("Viaje iniciando. Estado: parado")
+
         elif comando == "movimiento":
             if marca_tiempo is None:
                 print("Error: primero debes iniciar un viaje con 'iniciar'.")
@@ -44,7 +45,8 @@ if __name__ == "__main__":
             total += calcular_importe(estado, tiempo_transcurrido)
             estado = "movimiento"
             marca_tiempo = time.time()
-            print(f"Cambiado a movimiento. Total: {total:.2f}€")  
+            print(f"Cambiado a movimiento. Total: {total:.2f}€")
+
         elif comando == "parado":
             if marca_tiempo is None:
                 print("Error: primero debes iniciar un viaje con 'iniciar'.")
@@ -54,7 +56,8 @@ if __name__ == "__main__":
             total += calcular_importe(estado, tiempo_transcurrido)
             estado = "parado"
             marca_tiempo = time.time()
-            print(f"Cambiado a parado. Total: {total:.2f}€")  
+            print(f"Cambiado a parado. Total: {total:.2f}€")
+
         elif comando == "finalizar":
             if marca_tiempo is None:
                 print("Error: primero debes iniciar un viaje con 'iniciar'.")
@@ -68,12 +71,14 @@ if __name__ == "__main__":
             total = 0.0
             estado = "parado"
             marca_tiempo = None
+
         elif comando == "historial":
             try:
                 with open("logs/historial.txt") as log:
                     print(log.read())
             except FileNotFoundError:
-                print("Aun no hay trayectos registrados." )           
+                print("Aun no hay trayectos registrados.")
+                           
         elif comando == "salir":
             break
         else:
