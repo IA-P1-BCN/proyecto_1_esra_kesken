@@ -82,6 +82,25 @@ uv run streamlit run streamlit_app.py
 - **Tarifas en `config/tarifas.json`:** en vez de tenerlas fijas en el código, para poder cambiarlas sin tocar `taximetro.py`.
 - **`if __name__ == "__main__":`:** protege el bucle principal para que `taximetro.py` se pueda importar de forma segura desde los tests, sin que se ejecute el programa interactivo.
 
+## Estructura del Proyecto
+
+```
+proyecto_1_esra_kesken/
+├── taximetro.py           # Lógica principal (calcular_importe) y versión CLI
+├── streamlit_app.py       # Interfaz gráfica (nivel avanzado)
+├── config/
+│   └── tarifas.json       # Tarifas configurables
+├── logs/
+│   ├── historial.txt      # Historial de trayectos (generado, no versionado)
+│   └── app.log             # Logs técnicos (generado, no versionado)
+├── tests/
+│   └── test_taximetro.py  # Tests automáticos
+├── .streamlit/
+│   └── config.toml         # Tema visual (colores)
+├── pyproject.toml          # Dependencias del proyecto
+└── README.md
+```
+
 ## Organización del Proyecto y Estructura de Git
 
 El trabajo se organiza en un tablero Kanban (GitHub Projects: Backlog / In Progress / Done), con tareas etiquetadas por nivel (`[Medio]`, `[Avanzado]`). El nivel esencial e inicio del nivel medio se desarrollaron directamente en `main`, con commits siguiendo el formato de [conventional commits](https://www.conventionalcommits.org/) (`feat:`, `fix:`, `test:`, `docs:`, `chore:`).
