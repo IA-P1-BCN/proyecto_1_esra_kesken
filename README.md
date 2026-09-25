@@ -29,6 +29,7 @@ Al ejecutar `taximetro.py`, el programa pide comandos en un bucle. Comandos disp
 | `movimiento` | Cambia el estado a "en movimiento" |
 | `parado` | Cambia el estado a "parado" |
 | `finalizar` | Termina el trayecto, muestra el importe total y reinicia para el siguiente trayecto |
+| `historial` | Muestra el histórico de trayectos registrados |
 | `salir` | Cierra el programa |
 
 ## Niveles de Implementación
@@ -47,13 +48,16 @@ Este proyecto se organiza por **niveles**, no por fases rígidas.
 
 - [x] Lógica separada en funciones (`calcular_importe`)
 - [x] Tarifas configurables externamente (`config/tarifas.json`)
-- [x] Historial de trayectos guardado en `logs/historial.txt`
+- [x] Historial de trayectos guardado en `logs/historial.txt` y visible con el comando `historial`
 - [x] Tests automáticos con pytest (`tests/test_taximetro.py`)
 - [x] Manejo de errores de entrada (evita que el programa se rompa si se usa un comando antes de `iniciar`)
+- [x] Logs de operación con el módulo `logging` (`logs/app.log`), para diagnóstico técnico
 
 ### Nivel Avanzado ✅
 
 - [x] Interfaz gráfica con Streamlit (`streamlit_app.py`), reutilizando `calcular_importe` de `taximetro.py`
+- [x] Botones grandes y táctiles, pensados para uso en móvil/tablet
+- [x] También registra los trayectos en `logs/historial.txt`, igual que la versión CLI
 
 **Ejecución:**
 ```bash
@@ -103,6 +107,8 @@ uv run pytest -v
 ## Futuras Mejoras
 
 - Para uso real por parte de un taxista, la interfaz debería desplegarse como una app web alojada (accesible sin terminal) o empaquetarse como app móvil/tablet.
+- El cambio de estado (parado/movimiento) es manual en esta versión. En un sistema real, debería detectarse automáticamente mediante GPS o un sensor de velocidad del vehículo, sin intervención del conductor.
+- Protección con contraseña (solicitada por el responsable de flota, para evitar manipulaciones) no se ha implementado por ser de prioridad baja; quedaría pendiente para una futura iteración.
 
 ## Autora
 
