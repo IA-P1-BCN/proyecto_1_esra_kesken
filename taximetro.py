@@ -57,6 +57,12 @@ if __name__ == "__main__":
             total = 0.0
             estado = "parado"
             marca_tiempo = None
+        elif comando == "historial":
+            try:
+                with open("logs/historial.txt") as log:
+                    print(log.read())
+            except FileNotFoundError:
+                print("Aun no hay trayectos registrados." )           
         elif comando == "salir":
             break
         else:
