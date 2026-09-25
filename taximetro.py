@@ -1,6 +1,13 @@
 import time
 import json
 import datetime
+import logging
+
+logging.basicConfig(
+    filename="logs/app.log",
+    level=logging.INFO,
+    format="%(asctime)s - %(levelname)s - %(message)s"
+)
 
 with open("config/tarifas.json") as f:
     tarifas = json.load(f)
@@ -21,6 +28,7 @@ estado = "parado"
 marca_tiempo = None
 
 if __name__ == "__main__":
+    logging.info("Aplicación iniciada")
     
     while True:
         comando = input("Comando: ")
@@ -30,6 +38,7 @@ if __name__ == "__main__":
         elif comando == "movimiento":
             if marca_tiempo is None:
                 print("Error: primero debes iniciar un viaje con 'iniciar'.")
+                logging.warning("Comando '%s' usado sin iniciar viaje", comando)
                 continue
             tiempo_transcurrido = time.time() - marca_tiempo
             total += calcular_importe(estado, tiempo_transcurrido)
@@ -39,6 +48,7 @@ if __name__ == "__main__":
         elif comando == "parado":
             if marca_tiempo is None:
                 print("Error: primero debes iniciar un viaje con 'iniciar'.")
+                logging.warning("Comando '%s' usado sin iniciar viaje", comando)
                 continue
             tiempo_transcurrido = time.time() - marca_tiempo
             total += calcular_importe(estado, tiempo_transcurrido)
@@ -48,6 +58,7 @@ if __name__ == "__main__":
         elif comando == "finalizar":
             if marca_tiempo is None:
                 print("Error: primero debes iniciar un viaje con 'iniciar'.")
+                logging.warning("Comando '%s' usado sin iniciar viaje", comando)
                 continue
             tiempo_transcurrido = time.time() - marca_tiempo
             total += calcular_importe(estado, tiempo_transcurrido)
