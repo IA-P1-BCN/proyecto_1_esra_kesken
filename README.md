@@ -1,4 +1,4 @@
-# TaxiTech Solutions — Taxímetro
+# 🚕 TaxiTech Solutions — Taxímetro
 
 ## Descripción del Proyecto
 
@@ -14,10 +14,10 @@ Empresas de taxi (como el cliente ficticio de este proyecto) que necesitan moder
 
 ## Requisitos del Cliente Implementados
 
-- [x] Cálculo de tarifa en tiempo real según estado del taxi
-- [x] Tarifa en movimiento (≥ 20 km/h): 0,05 €/segundo
-- [x] Tarifa parado / velocidad baja (< 20 km/h): 0,02 €/segundo
-- [x] Varios trayectos seguidos sin cerrar el programa
+- ✅ Cálculo de tarifa en tiempo real según estado del taxi
+- ✅ Tarifa en movimiento (≥ 20 km/h): 0,05 €/segundo
+- ✅ Tarifa parado / velocidad baja (< 20 km/h): 0,02 €/segundo
+- ✅ Varios trayectos seguidos sin cerrar el programa
 
 ## Cómo Usar el Programa
 
@@ -38,26 +38,26 @@ Este proyecto se organiza por **niveles**, no por fases rígidas.
 
 ### Nivel Esencial ✅
 
-- [x] Programa ejecutable desde línea de comandos (bucle `while True` + `input()`)
-- [x] Cálculo de tarifa en tiempo real usando `time.time()` (segundos reales transcurridos entre cambios de estado)
-- [x] Cambio de estado (parado ↔ movimiento) con la tarifa correcta aplicada a cada tramo
-- [x] Finalización del trayecto con importe total mostrado
-- [x] Varios trayectos seguidos sin cerrar el programa (reinicio de `total`, `estado` y `marca_tiempo` tras finalizar)
+- ✅ Programa ejecutable desde línea de comandos (bucle `while True` + `input()`)
+- ✅ Cálculo de tarifa en tiempo real usando `time.time()` (segundos reales transcurridos entre cambios de estado)
+- ✅ Cambio de estado (parado ↔ movimiento) con la tarifa correcta aplicada a cada tramo
+- ✅ Finalización del trayecto con importe total mostrado
+- ✅ Varios trayectos seguidos sin cerrar el programa (reinicio de `total`, `estado` y `marca_tiempo` tras finalizar)
 
 ### Nivel Medio ✅
 
-- [x] Lógica separada en funciones (`calcular_importe`)
-- [x] Tarifas configurables externamente (`config/tarifas.json`)
-- [x] Historial de trayectos guardado en `logs/historial.txt` y visible con el comando `historial`
-- [x] Tests automáticos con pytest (`tests/test_taximetro.py`)
-- [x] Manejo de errores de entrada (evita que el programa se rompa si se usa un comando antes de `iniciar`)
-- [x] Logs de operación con el módulo `logging` (`logs/app.log`), para diagnóstico técnico
+- ✅ Lógica separada en funciones (`calcular_importe`)
+- ✅ Tarifas configurables externamente (`config/tarifas.json`)
+- ✅ Historial de trayectos guardado en `logs/historial.txt` y visible con el comando `historial`
+- ✅ Tests automáticos con pytest (`tests/test_taximetro.py`)
+- ✅ Manejo de errores de entrada (evita que el programa se rompa si se usa un comando antes de `iniciar`)
+- ✅ Logs de operación con el módulo `logging` (`logs/app.log`), para diagnóstico técnico
 
 ### Nivel Avanzado ✅
 
-- [x] Interfaz gráfica con Streamlit (`streamlit_app.py`), reutilizando `calcular_importe` de `taximetro.py`
-- [x] Botones grandes y táctiles, pensados para uso en móvil/tablet
-- [x] También registra los trayectos en `logs/historial.txt`, igual que la versión CLI
+- ✅ Interfaz gráfica con Streamlit (`streamlit_app.py`), reutilizando `calcular_importe` de `taximetro.py`
+- ✅ Botones grandes y táctiles, pensados para uso en móvil/tablet
+- ✅ También registra los trayectos en `logs/historial.txt`, igual que la versión CLI
 
 **Ejecución:**
 ```bash
