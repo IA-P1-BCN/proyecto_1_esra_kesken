@@ -75,10 +75,18 @@ if __name__ == "__main__":
         elif comando == "historial":
             try:
                 with open("logs/historial.txt") as log:
-                    print(log.read())
+                    lineas = log.readlines()
+                print("".join(lineas))
+
+                hoy = datetime.date.today().isoformat()
+                total_hoy = 0.0
+                for linea in lineas:
+                    if linea.startswith(hoy):
+                        importe_texto = linea.split("Total: ")[1].replace("€", "").strip()
+                        total_hoy += float(importe_texto)
+                print(f"Total de hoy ({hoy}): {total_hoy:.2f}€")
             except FileNotFoundError:
                 print("Aun no hay trayectos registrados.")
-                           
         elif comando == "salir":
             break
         else:
