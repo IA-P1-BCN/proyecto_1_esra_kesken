@@ -48,7 +48,7 @@ Este proyecto se organiza por **niveles**, no por fases rígidas.
 
 - ✅ Lógica separada en funciones (`calcular_importe`)
 - ✅ Tarifas configurables externamente (`config/tarifas.json`)
-- ✅ Historial de trayectos guardado en `logs/historial.txt` y visible con el comando `historial`
+- ✅ Historial de trayectos guardado en `logs/historial.txt` y visible con el comando `historial`, que además muestra el total facturado hoy (para "cuadrar caja")
 - ✅ Tests automáticos con pytest (`tests/test_taximetro.py`)
 - ✅ Manejo de errores de entrada (evita que el programa se rompa si se usa un comando antes de `iniciar`)
 - ✅ Logs de operación con el módulo `logging` (`logs/app.log`), para diagnóstico técnico
@@ -58,6 +58,7 @@ Este proyecto se organiza por **niveles**, no por fases rígidas.
 - ✅ Interfaz gráfica con Streamlit (`streamlit_app.py`), reutilizando `calcular_importe` de `taximetro.py`
 - ✅ Botones grandes y táctiles, pensados para uso en móvil/tablet
 - ✅ También registra los trayectos en `logs/historial.txt`, igual que la versión CLI
+- ✅ Botón "Total de Hoy", reutilizando `calcular_total_hoy` de `taximetro.py`
 
 **Ejecución:**
 ```bash

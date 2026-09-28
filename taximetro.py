@@ -23,6 +23,15 @@ def calcular_importe(estado, tiempo_transcurrido):
         return tiempo_transcurrido * TARIFA_MOVIMIENTO
 
 
+def calcular_total_hoy(lineas, hoy):
+    total_hoy = 0.0
+    for linea in lineas:
+        if linea.startswith(hoy):
+            importe_texto = linea.split("Total: ")[1].replace("€", "").strip()
+            total_hoy += float(importe_texto)
+    return total_hoy
+
+
 total = 0.0
 estado = "parado"
 marca_tiempo = None
@@ -79,11 +88,7 @@ if __name__ == "__main__":
                 print("".join(lineas))
 
                 hoy = datetime.date.today().isoformat()
-                total_hoy = 0.0
-                for linea in lineas:
-                    if linea.startswith(hoy):
-                        importe_texto = linea.split("Total: ")[1].replace("€", "").strip()
-                        total_hoy += float(importe_texto)
+                total_hoy = calcular_total_hoy(lineas, hoy)
                 print(f"Total de hoy ({hoy}): {total_hoy:.2f}€")
             except FileNotFoundError:
                 print("Aun no hay trayectos registrados.")

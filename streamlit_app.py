@@ -3,7 +3,7 @@ import datetime
 
 import streamlit as st
 
-from taximetro import calcular_importe
+from taximetro import calcular_importe, calcular_total_hoy
 
 st.markdown(
     "<h1 style='text-align: center; font-size: 3.5em;'>🚕 Taxímetro</h1>",
@@ -90,3 +90,16 @@ st.markdown(
     """,
     unsafe_allow_html=True,
 )
+
+st.divider()
+
+col_centro = st.columns([1, 1, 1])[1]
+if col_centro.button("Total de Hoy", use_container_width=True, type="primary"):
+    try:
+        with open("logs/historial.txt") as log:
+            lineas = log.readlines()
+        hoy = datetime.date.today().isoformat()
+        total_hoy = calcular_total_hoy(lineas, hoy)
+        st.info(f"💶 Total facturado hoy ({hoy}): {total_hoy:.2f}€")
+    except FileNotFoundError:
+        st.info("Aún no hay trayectos registrados.")
