@@ -38,7 +38,8 @@ marca_tiempo = None
 
 if __name__ == "__main__":
     logging.info("Aplicación iniciada")
-    
+    print("Comandos disponibles: iniciar, movimiento, parado, finalizar, historial, salir")
+
     while True:
         comando = input("Comando: ")
         if comando == "iniciar":
